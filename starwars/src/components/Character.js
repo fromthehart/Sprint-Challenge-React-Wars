@@ -17,16 +17,16 @@ class Character extends React.Component {
           </summary>
           <div className="info">
             <div className="attribute">
-              <h4 className="heading">Height:</h4> {this.props.height}
+              <h4 className="heading">Height:</h4> {this.props.height}cm
             </div>
             <div className="attribute">
-              <h4 className="heading">Mass:</h4> {this.props.mass}
+              <h4 className="heading">Mass:</h4> {this.props.mass}kg
             </div>
             <div className="attribute">
               <h4 className="heading">Hair Color:</h4> {this.props.hair_color}
             </div>
             <div className="attribute">
-              <h4 className="heading">Height:</h4> {this.props.skin_color}
+              <h4 className="heading">Skin Color:</h4> {this.props.skin_color}
             </div>
           </div>
         </details>
