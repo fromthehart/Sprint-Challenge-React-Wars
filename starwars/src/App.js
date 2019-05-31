@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import CharacterList from './components/CharacterList'
+import NavButton from './components/NavButton'
 import './App.scss';
 
 class App extends Component {
@@ -15,19 +16,19 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.getCharacters('https://swapi.co/api/people/');
+    this.getCharacters('https://swapi.co/api/people/', 1);
   }
 
-  getCharacters = URL => {
+  getCharacters = (URL, page) => {
     // feel free to research what this code is doing.
     // At a high level we are calling an API to fetch some starwars data from the open web.
     // We then take that data and resolve it our state.
-    fetch(URL)
+    fetch(`${URL}?page=${page}`)
       .then(res => {
         return res.json();
       })
       .then(data => {
-        //console.log(data)
+        console.log(data)
         this.setState({
           starwarsChars: data.results,
           totalChars: data.count,
