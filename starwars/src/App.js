@@ -6,7 +6,11 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      starwarsChars: []
+      starwarsChars: [],
+      totalChars: 0,
+      pages: 0,
+      nextPage: null,
+      prevPage: null
     };
   }
 
@@ -23,7 +27,14 @@ class App extends Component {
         return res.json();
       })
       .then(data => {
-        this.setState({ starwarsChars: data.results });
+        //console.log(data)
+        this.setState({
+          starwarsChars: data.results,
+          totalChars: data.count,
+          pages: Math.ceil(data.count / 10),
+          nextPage: data.next,
+          prevPage: data.previous
+        });
       })
       .catch(err => {
         throw new Error(err);
@@ -31,6 +42,7 @@ class App extends Component {
   };
 
   render() {
+    console.log(this.state)
     return (
       <div className="App">
         <h1 className="Header">React Wars</h1>
