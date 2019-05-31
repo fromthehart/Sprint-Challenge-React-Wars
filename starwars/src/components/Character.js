@@ -5,9 +5,17 @@ class Character extends React.Component {
     super(props)
   }
 
-  render = () => {
+  render = props => {
     return (
-      <li>Character</li>
+      <li class="character">
+        <details>
+          <summary>{this.props.name}</summary>
+          <p>Height: {this.props.height}</p>
+          <p>Mass: {this.props.mass}</p>
+          <p>Hair Color: {this.props.hair_color}</p>
+          <p>Skin Color: {this.props.skin_color}</p>
+        </details>
+      </li>
     )
   }
 }

@@ -7,11 +7,23 @@ class CharacterList extends React.Component {
     super(props)
   }
 
-  render = () => {
+  render = props => {
+    console.log(this.props.charDirectory)
     return (
-      <ul>
-        <Character />
-      </ul>
+      this.props.charDirectory.map((char, index) => {
+        return (
+          <ul>
+            <Character 
+              key={index.toString()}
+              name={char.name}
+              height={char.height}
+              mass={char.mass}
+              hair_color={char.hair_color}
+              skin_color={char.skin_color}
+            />
+          </ul>
+        )
+      })
     )
   }
 }
