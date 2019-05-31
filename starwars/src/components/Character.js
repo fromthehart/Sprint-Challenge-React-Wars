@@ -1,19 +1,34 @@
 import React from 'react'
 
 class Character extends React.Component {
-  constructor(props) {
-    super(props)
-  }
+  // Removed constructor to get rid of Userless Constructor warning in console
+  // constructor(props) {
+  //   super(props)
+  // }
 
-  render = props => {
+  render = () => {
     return (
-      <li class="character">
+      // Added unique 'key' prop to each <li> attempting to get rid of "Each child
+      // in a list should have a unique 'key' prop." warning in console. No such luck. Ideas? 
+      <li key={this.props.id} className="character">
         <details>
-          <summary>{this.props.name}</summary>
-          <p>Height: {this.props.height}</p>
-          <p>Mass: {this.props.mass}</p>
-          <p>Hair Color: {this.props.hair_color}</p>
-          <p>Skin Color: {this.props.skin_color}</p>
+          <summary className="heading">
+            <span>{this.props.name}</span>
+          </summary>
+          <div className="info">
+            <div className="attribute">
+              <h4 className="heading">Height:</h4> {this.props.height}
+            </div>
+            <div className="attribute">
+              <h4 className="heading">Mass:</h4> {this.props.mass}
+            </div>
+            <div className="attribute">
+              <h4 className="heading">Hair Color:</h4> {this.props.hair_color}
+            </div>
+            <div className="attribute">
+              <h4 className="heading">Height:</h4> {this.props.skin_color}
+            </div>
+          </div>
         </details>
       </li>
     )

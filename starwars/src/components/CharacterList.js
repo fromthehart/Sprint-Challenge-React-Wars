@@ -1,27 +1,29 @@
 import React from 'react'
 import Character from './Character'
-import './StarWars.css'
+import './StarWars.scss'
 
 class CharacterList extends React.Component {
-  constructor(props) {
-    super(props)
-  }
+  // Removed constructor to get rid of Userless Constructor warning in console
+  // constructor(props) {
+  //   super(props)
+  // }
 
-  render = props => {
-    console.log(this.props.charDirectory)
+  render = () => {
     return (
       this.props.charDirectory.map((char, index) => {
         return (
-          <ul>
-            <Character 
-              key={index.toString()}
-              name={char.name}
-              height={char.height}
-              mass={char.mass}
-              hair_color={char.hair_color}
-              skin_color={char.skin_color}
-            />
-          </ul>
+          <div className="character-list">
+            <ul>
+              <Character 
+                id={index.toString()} // Unique key for each <li> item. See comment in Character.js
+                name={char.name}
+                height={char.height}
+                mass={char.mass}
+                hair_color={char.hair_color}
+                skin_color={char.skin_color}
+              />
+            </ul>
+          </div>
         )
       })
     )
