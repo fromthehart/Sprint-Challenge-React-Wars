@@ -12,7 +12,7 @@ class Character extends React.Component {
       // in a list should have a unique 'key' prop." warning in console. No such luck. Ideas? 
       <li key={this.props.id} className="character">
         <details>
-          <summary className="heading">
+          <summary className="name">
             <span>{this.props.name}</span>
           </summary>
           <div className="info">

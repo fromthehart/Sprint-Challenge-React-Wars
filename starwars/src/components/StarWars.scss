@@ -1,3 +1,4 @@
+
 .character-container {
   width: 90%;
   max-width: 1000px;
@@ -13,7 +14,7 @@
     0 0 60px 30px #fff,
     0 0 100px 60px #f0f,
     0 0 140px 90px #0ff;
-  text-shadow: 0 0 4px rgb(23, 188, 218);  
+  text-shadow: 0 0 4px #17bcda;
   
   .character-list {
 
@@ -21,18 +22,17 @@
       width: 90%;
       margin: 30px auto;
 
-      summary::-webkit-details-marker {
-        float: right;
-        margin: 4px 0 0 10px;
-      }
-
-      .heading {
+      .name {
         display: inline-block;
         font-size: 2.2rem;
         font-weight: bold;
         text-transform: uppercase;
         cursor: pointer;
         color: #4bd5ee;
+        &:focus {
+          outline: none;
+          color: #e5b13a
+        }
       }
 
       .info {
@@ -45,7 +45,7 @@
         .attribute {
           text-transform: uppercase;                    
           font-size: 1.3rem;
-          color: rgb(229, 177, 58);
+          color: #e5b13a;
           padding: 0 1rem;
           height: auto;
           line-height: 0;
