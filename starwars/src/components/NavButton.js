@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faAngleLeft,
@@ -6,23 +6,25 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import "./NavButton.scss";
 
-export default class NavButton extends Component {
-  clickHandler = e => {
+const NavButton = props => {
+  const clickHandler = e => {
     e.preventDefault();
-    if (this.props.pageLink) {
-      this.props.pageChangeHandler(this.props.pageLink);
+    if (props.pageLink) {
+      props.pageChangeHandler(props.pageLink);
     }
   };
 
-  render = props => {
-    return (
-      <div className="navButton">
-        {this.props.pageLink ? (
-          <button className={this.props.action} onClick={e => this.clickHandler(e)}><FontAwesomeIcon icon={this.props.action === 'prev' ? faAngleLeft: faAngleRight} /></button>
-        ) : (
-          <button className={this.props.action} disabled><FontAwesomeIcon icon={this.props.action === 'prev' ? faAngleLeft: faAngleRight} /></button>
-        )}
-      </div>
-    );
-  };
+  return (
+    <div className="navButton">
+      // If a link to a next or previous page was received, return a button with an onClick handler for navigation
+      // Otherwise return a disabled button
+      {props.pageLink ? (
+        <button className={props.action} onClick={e => clickHandler(e)}><FontAwesomeIcon icon={props.action === 'prev' ? faAngleLeft: faAngleRight} /></button>
+      ) : (
+        <button className={props.action} disabled><FontAwesomeIcon icon={props.action === 'prev' ? faAngleLeft: faAngleRight} /></button>
+      )}
+    </div>
+  );
 }
+
+export default NavButton;

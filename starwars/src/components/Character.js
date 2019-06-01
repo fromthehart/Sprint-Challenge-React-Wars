@@ -1,35 +1,27 @@
 import React from "react";
 
-export default class Character extends React.Component {
-  // Removed constructor to get rid of Userless Constructor warning in console
-  // constructor(props) {
-  //   super(props)
-  // }
-
-  render = () => {
-    return (
-      // Added unique "key" prop to each <li> attempting to get rid of "Each child
-      // in a list should have a unique "key" prop." warning in console. No such luck. Ideas?
-      //<li key={this.props.uniqueKey} className="character">
-      <details>
-        <summary className="name">
-          <span>{this.props.name}</span>
-        </summary>
-        <div className="info">
-          <div className="attribute">
-            <h4 className="heading">Height:</h4> {this.props.height}cm
-          </div>
-          <div className="attribute">
-            <h4 className="heading">Mass:</h4> {this.props.mass}kg
-          </div>
-          <div className="attribute">
-            <h4 className="heading">Hair Color:</h4> {this.props.hair_color}
-          </div>
-          <div className="attribute">
-            <h4 className="heading">Skin Color:</h4> {this.props.skin_color}
-          </div>
+const Character = props => {
+  return (
+    <details>
+      <summary className="name">
+        <span>{props.name}</span>
+      </summary>
+      <div className="info">
+        <div className="attribute">
+          <h4 className="heading">Height:</h4> {props.height}cm
         </div>
-      </details>
-    );
-  };
+        <div className="attribute">
+          <h4 className="heading">Mass:</h4> {props.mass}kg
+        </div>
+        <div className="attribute">
+          <h4 className="heading">Hair Color:</h4> {props.hair_color}
+        </div>
+        <div className="attribute">
+          <h4 className="heading">Skin Color:</h4> {props.skin_color}
+        </div>
+      </div>
+    </details>
+  );
 }
+
+export default Character;
