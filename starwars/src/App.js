@@ -14,7 +14,6 @@ export default class App extends Component {
       nextPage: null,
       prevPage: null
     };
-    this.changePage = this.changePage.bind(this);
   }
 
   componentDidMount() {
@@ -41,12 +40,6 @@ export default class App extends Component {
       });
   };
 
-  changePage = page => {
-    if (page) {
-      this.getCharacters(page);
-    }
-  };
-
   render() {
     return (
       <div className="App">
@@ -66,13 +59,13 @@ export default class App extends Component {
           action="prev"
           pageLink={this.state.prevPage}
           pageTotal={this.state.pages}
-          pageChangeHandler={this.changePage}
+          pageChangeHandler={this.getCharacters}
         />
         <NavButton
           action="next"
           pageLink={this.state.nextPage}
           pageTotal={this.state.pages}
-          pageChangeHandler={this.changePage}
+          pageChangeHandler={this.getCharacters}
         />
       </div>
     );
