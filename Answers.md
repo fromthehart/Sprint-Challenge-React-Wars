@@ -18,5 +18,4 @@ State is simply the data which is available inside an application. We store data
 
 5.  Describe props.
 
-
 Props are properties passed to a Component. They flow down to a component from a parent, and are read-only. They are often pieces of data from the current State of the app, but State itself can only be changed through `setState()`.

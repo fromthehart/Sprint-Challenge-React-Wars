@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react"
 
 class Character extends React.Component {
   // Removed constructor to get rid of Userless Constructor warning in console
@@ -8,9 +8,9 @@ class Character extends React.Component {
 
   render = () => {
     return (
-      // Added unique 'key' prop to each <li> attempting to get rid of "Each child
-      // in a list should have a unique 'key' prop." warning in console. No such luck. Ideas? 
-      <li key={this.props.id} className="character">
+      // Added unique "key" prop to each <li> attempting to get rid of "Each child
+      // in a list should have a unique "key" prop." warning in console. No such luck. Ideas? 
+      //<li key={this.props.uniqueKey} className="character">
         <details>
           <summary className="name">
             <span>{this.props.name}</span>
@@ -30,7 +30,6 @@ class Character extends React.Component {
             </div>
           </div>
         </details>
-      </li>
     )
   }
 }
