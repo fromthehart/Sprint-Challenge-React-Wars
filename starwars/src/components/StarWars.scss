@@ -1,6 +1,6 @@
 
 .character-container {
-  width: 90%;
+  width: 65%;
   max-width: 1000px;
   margin: 0 auto;
   padding: 20px;
@@ -33,6 +33,9 @@
           outline: none;
           color: #e5b13a
         }
+        @media (max-width: 500px) {
+          font-size: 2rem;
+        }
       }
 
       .info {
@@ -40,15 +43,14 @@
         justify-content: space-evenly;
         flex-flow: row wrap;
         width: 100%;
-        margin-top: 10px;
 
         .attribute {
           text-transform: uppercase;                    
-          font-size: 1.3rem;
+          font-size: 1.4rem;
           color: #e5b13a;
           padding: 0 1rem;
-          height: auto;
-          line-height: 0;
+          margin: 20px 0 0;
+          line-height: 2rem;
 
           .heading {
             display: inline-block;

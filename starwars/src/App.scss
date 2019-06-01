@@ -1,3 +1,4 @@
+@import './reset.css';
 @import url('https://fonts.googleapis.com/css?family=Orbitron&display=swap');
 
 * {
@@ -14,16 +15,28 @@ ul {
 
 .App {
   width: 100%;
-  padding: 30px 0;
   font-family: 'Orbitron', sans-serif;
   letter-spacing: 0.7rem;
 
   .Header {
+    margin: 30px auto 25px;
     font-size: 5rem;
     font-weight: bold;
     text-align: center;
     color: white;
-    text-shadow: 0 0 10px rgb(23, 188, 218);
+    text-shadow: 0 0 10px #17bcda;
     text-transform: uppercase;
-  }  
+    width: 90%;
+    padding: 0 20px;
+    font-size: 10rem;
+    user-select: none;
+
+    @media (max-width: 1000px) {
+      font-size: 6rem;
+    }
+
+    @media (max-width: 500px) {
+      font-size: 4rem;
+    }
+  }
 }
