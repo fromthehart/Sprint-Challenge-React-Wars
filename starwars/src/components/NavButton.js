@@ -9,20 +9,18 @@ import "./NavButton.scss";
 export default class NavButton extends Component {
   clickHandler = e => {
     e.preventDefault();
-    if (this.props.pageNum) {
-      this.props.pageChange(this.props.pageNum);
+    if (this.props.pageLink) {
+      this.props.pageChangeHandler(this.props.pageLink);
     }
   };
 
   render = props => {
-    console.log(this.props.action);
     return (
       <div className="navButton">
-        {this.props.pageNum === 1 ||
-        this.props.pageNum === this.props.pageTotal ? (
-          <button className={this.props.action} disabled><FontAwesomeIcon icon={this.props.action === 'prev' ? faAngleLeft: faAngleRight} /></button>
-        ) : (
+        {this.props.pageLink ? (
           <button className={this.props.action} onClick={e => this.clickHandler(e)}><FontAwesomeIcon icon={this.props.action === 'prev' ? faAngleLeft: faAngleRight} /></button>
+        ) : (
+          <button className={this.props.action} disabled><FontAwesomeIcon icon={this.props.action === 'prev' ? faAngleLeft: faAngleRight} /></button>
         )}
       </div>
     );

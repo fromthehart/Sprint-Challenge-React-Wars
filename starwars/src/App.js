@@ -1,11 +1,6 @@
 import React, { Component } from "react";
 import CharacterList from "./components/CharacterList";
 import NavButton from "./components/NavButton";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faAngleLeft,
-  faAngleRight
-} from "@fortawesome/free-solid-svg-icons";
 import "./App.scss";
 
 export default class App extends Component {
@@ -15,39 +10,31 @@ export default class App extends Component {
       starwarsChars: [],
       totalChars: 0,
       pages: 0,
-      curPage: 1,
-      nextPage: 1,
-      prevPage: 1
+      curPage: "1",
+      nextPage: null,
+      prevPage: null
     };
     this.changePage = this.changePage.bind(this);
   }
 
   componentDidMount() {
-    this.getCharacters("https://swapi.co/api/people/", 1);
+    this.getCharacters("https://swapi.co/api/people/?page=1");
   }
 
-  getCharacters = (URL, page) => {
-    fetch(`${URL}?page=${page}`)
+  getCharacters = URL => {
+    fetch(URL)
       .then(res => {
         return res.json();
       })
       .then(data => {
-        //console.log(data)
         this.setState({
           starwarsChars: data.results,
           totalChars: data.count,
           pages: Math.ceil(data.count / 10),
-          curPage: 1,
-          nextPage:
-            Math.ceil(data.count / 10) > 1
-              ? Math.max(Math.min(page + 1, this.state.pages), 2)
-              : 1,
-          prevPage:
-            Math.ceil(data.count / 10) > 1
-              ? Math.max(Math.min(page - 1, this.state.pages - 1), 0)
-              : 1
+          curPage: URL.split('=')[1],
+          nextPage: data.next,
+          prevPage: data.previous
         });
-        console.log(this.state);
       })
       .catch(err => {
         throw new Error(err);
@@ -55,16 +42,9 @@ export default class App extends Component {
   };
 
   changePage = page => {
-    console.log(page);
-    const next = Math.max(Math.min(page + 1, this.state.pages), 1);
-    const prev = Math.max(Math.min(page - 1, next - 1), 1);
-    this.getCharacters("https://swapi.co/api/people/", page);
-    this.setState(prevState => ({
-      prevPage: prev,
-      curPage: page,
-      nextPage: next
-    }));
-    console.log(this.state);
+    if (page) {
+      this.getCharacters(page);
+    }
   };
 
   render() {
@@ -72,21 +52,27 @@ export default class App extends Component {
       <div className="App">
         <h1 className="Header">React Wars</h1>   
 
+        <div className="page-count-container">
+          <div className="page-count">
+            Page {this.state.curPage} of 9
+          </div>
+        </div>
+
         <div className="character-container">
           <CharacterList charDirectory={this.state.starwarsChars} />
         </div>
 
         <NavButton
           action="prev"
-          pageNum={this.state.prevPage}
+          pageLink={this.state.prevPage}
           pageTotal={this.state.pages}
-          pageChange={this.changePage}
+          pageChangeHandler={this.changePage}
         />
         <NavButton
           action="next"
-          pageNum={this.state.nextPage}
+          pageLink={this.state.nextPage}
           pageTotal={this.state.pages}
-          pageChange={this.changePage}
+          pageChangeHandler={this.changePage}
         />
       </div>
     );

@@ -19,8 +19,7 @@ ul {
   letter-spacing: 0.7rem;
 
   .Header {
-    margin: 30px auto 25px;
-    font-size: 5rem;
+    margin: 30px auto 15px;
     font-weight: bold;
     text-align: center;
     color: white;
@@ -32,11 +31,32 @@ ul {
     user-select: none;
 
     @media (max-width: 1000px) {
-      font-size: 6rem;
+      font-size: 7rem;
     }
 
     @media (max-width: 500px) {
       font-size: 4rem;
+    }
+  }
+
+  .page-count-container {
+    width: 100%;
+    margin-bottom: 15px;
+    .page-count {
+      width: 60%;
+      max-width: 1000px;
+      margin: 0 auto;
+      font-size: 2.4rem;
+      font-weight: bold;
+      text-align: center;
+      color: white;
+      text-shadow: 0 0 10px #17bcda;
+      text-transform: uppercase;
+      user-select: none;
+      padding: 10px 0 5px;
+      @media (max-width: 500px) {
+        font-size: 1.8rem;
+      }
     }
   }
 }
