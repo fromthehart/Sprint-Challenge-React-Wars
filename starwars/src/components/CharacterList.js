@@ -4,7 +4,7 @@ import "./StarWars.scss";
 
 const CharacterList = props => {
   return (
-    <div className="character-list">
+    <div className={`character-list ${props.fading ? "" : "hidden"}`}>
       <ul>
         {props.charDirectory.map((char, index) => {
           return (

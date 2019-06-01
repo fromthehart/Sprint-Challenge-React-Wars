@@ -12,7 +12,8 @@ export default class App extends Component {
       pages: 0,
       curPage: "1",
       nextPage: null,
-      prevPage: null
+      prevPage: null,
+      fadeStart: true
     };
   }
 
@@ -21,6 +22,7 @@ export default class App extends Component {
   }
 
   getCharacters = URL => {
+    this.setState(prevState => ({ fadeStart: false }));
     fetch(URL)
       .then(res => {
         return res.json();
@@ -32,7 +34,8 @@ export default class App extends Component {
           pages: Math.ceil(data.count / 10),
           curPage: URL.split('=')[1],
           nextPage: data.next,
-          prevPage: data.previous
+          prevPage: data.previous,
+          fadeStart: true
         });
       })
       .catch(err => {
@@ -43,7 +46,7 @@ export default class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1 className="Header">React Wars</h1>   
+        <h1 className="Header">React Wars</h1>
 
         <div className="page-count-container">
           <div className="page-count">
@@ -52,7 +55,7 @@ export default class App extends Component {
         </div>
 
         <div className="character-container">
-          <CharacterList charDirectory={this.state.starwarsChars} />
+          <CharacterList charDirectory={this.state.starwarsChars} fading={this.state.fadeStart} />
         </div>
 
         <NavButton
