@@ -10,11 +10,13 @@ const CharacterList = props => {
           return (
             <li key={index} className="character">
               <Character
-                name={char.name}
-                gender={char.gender}
-                birth_year={char.birth_year}
-                height={char.height}
-                mass={char.mass}
+               stats={[
+                ["Name", char.name],
+                ["Gender", char.gender],
+                ["Birth Year", char.birth_year],
+                ["Height", (char.height / 100) + 'm'],
+                ["Weight", char.mass + 'kg']
+              ]}
               />
             </li>
           );

@@ -4,21 +4,20 @@ const Character = props => {
   return (
     <details>
       <summary className="name">
-        <span>{props.name}</span>
+        <span>{props.stats[0][1]}</span>
       </summary>
       <div className="info">
-        <div className="attribute">
-          <h4 className="heading">Gender:</h4> {props.gender}
-        </div>
-        <div className="attribute">
-          <h4 className="heading">Birth Year:</h4> {props.birth_year}
-        </div>
-        <div className="attribute">
-          <h4 className="heading">Height:</h4> {props.height / 100}m
-        </div>
-        <div className="attribute">
-          <h4 className="heading">Weight:</h4> {props.mass}kg
-        </div>
+        {props.stats.map((stat, index) => {
+          console.log(stat)
+          if (index) {
+            return (
+              <div className="attribute">
+                <h4 className="heading">{stat[0]}: </h4> {stat[1]}
+              </div>
+            )
+          } else {
+            return null;
+        }})}
       </div>
     </details>
   );
