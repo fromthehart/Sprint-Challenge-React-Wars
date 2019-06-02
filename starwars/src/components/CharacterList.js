@@ -11,10 +11,10 @@ const CharacterList = props => {
             <li key={index} className="character">
               <Character
                 name={char.name}
+                gender={char.gender}
+                birth_year={char.birth_year}
                 height={char.height}
                 mass={char.mass}
-                hair_color={char.hair_color}
-                skin_color={char.skin_color}
               />
             </li>
           );

@@ -30,7 +30,6 @@
         text-transform: uppercase;
         cursor: pointer;
         color: #4bd5ee;
-        line-height: 2.8rem;
         &:focus {
           outline: none;
           color: #e5b13a
@@ -76,6 +75,6 @@
 
   .hidden {
     opacity: 0;
-    transform: scale(1.015);
+    transform: scale(1.01);
   }
 } // .character-container
