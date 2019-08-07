@@ -1,0 +1,62 @@
+@import './reset.css';
+@import url('https://fonts.googleapis.com/css?family=Orbitron&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.App {
+  width: 100%;
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 0.7rem;
+
+  .Header {
+    margin: 30px auto 15px;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+    text-shadow: 0 0 10px #17bcda;
+    text-transform: uppercase;
+    width: 90%;
+    padding: 0 20px;
+    font-size: 10rem;
+    user-select: none;
+
+    @media (max-width: 1000px) {
+      font-size: 7rem;
+    }
+
+    @media (max-width: 500px) {
+      font-size: 4rem;
+    }
+  }
+
+  .page-count-container {
+    width: 100%;
+    margin-bottom: 15px;
+    .page-count {
+      width: 60%;
+      max-width: 1000px;
+      margin: 0 auto;
+      font-size: 2.4rem;
+      font-weight: bold;
+      text-align: center;
+      color: white;
+      text-shadow: 0 0 10px #17bcda;
+      text-transform: uppercase;
+      user-select: none;
+      padding: 10px 0 5px;
+      @media (max-width: 500px) {
+        font-size: 1.8rem;
+      }
+    }
+  }
+}

@@ -1,28 +1,42 @@
-import React, { Component } from 'react';
-import './App.css';
+import React, { Component } from "react";
+import CharacterList from "./components/CharacterList";
+import NavButton from "./components/NavButton";
+import "./App.scss";
 
-class App extends Component {
+export default class App extends Component {
   constructor() {
     super();
     this.state = {
-      starwarsChars: []
+      starwarsChars: [],
+      totalChars: 0,
+      pages: 0,
+      curPage: "1",
+      nextPage: null,
+      prevPage: null,
+      fadeStart: true
     };
   }
 
   componentDidMount() {
-    this.getCharacters('https://swapi.co/api/people/');
+    this.getCharacters("https://swapi.co/api/people/?page=1");
   }
 
   getCharacters = URL => {
-    // feel free to research what this code is doing.
-    // At a high level we are calling an API to fetch some starwars data from the open web.
-    // We then take that data and resolve it our state.
+    this.setState(prevState => ({ fadeStart: false }));
     fetch(URL)
       .then(res => {
         return res.json();
       })
       .then(data => {
-        this.setState({ starwarsChars: data.results });
+        this.setState({
+          starwarsChars: data.results,
+          totalChars: data.count,
+          pages: Math.ceil(data.count / 10),
+          curPage: URL.split('=')[1],
+          nextPage: data.next,
+          prevPage: data.previous,
+          fadeStart: true
+        });
       })
       .catch(err => {
         throw new Error(err);
@@ -33,9 +47,30 @@ class App extends Component {
     return (
       <div className="App">
         <h1 className="Header">React Wars</h1>
+
+        <div className="page-count-container">
+          <div className="page-count">
+            Page {this.state.curPage} of 9
+          </div>
+        </div>
+
+        <div className="character-container">
+          <CharacterList charDirectory={this.state.starwarsChars} fading={this.state.fadeStart} />
+        </div>
+
+        <NavButton
+          action="prev"
+          pageLink={this.state.prevPage}
+          pageTotal={this.state.pages}
+          pageChangeHandler={this.getCharacters}
+        />
+        <NavButton
+          action="next"
+          pageLink={this.state.nextPage}
+          pageTotal={this.state.pages}
+          pageChangeHandler={this.getCharacters}
+        />
       </div>
     );
   }
 }
-
-export default App;
